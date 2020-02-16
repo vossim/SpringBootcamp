@@ -3,10 +3,12 @@ package com.tvh.bootcamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Qualifier("usaEmployeeRepository")
+@Profile("usa")
 public class TvhUsaEmployeeRepository implements EmployeeRepository {
     @Override
     public List<Employee> getEmployees() {

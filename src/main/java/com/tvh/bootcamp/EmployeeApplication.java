@@ -1,11 +1,12 @@
 package com.tvh.bootcamp;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
-@SpringBootApplication
-public class EmployeeApplication implements CommandLineRunner {
+@Component
+@ComponentScan
+public class EmployeeApplication {
 
     private final EmployeeService employeeService;
 
@@ -16,14 +17,18 @@ public class EmployeeApplication implements CommandLineRunner {
     public void run(String... args) {
         System.out.println("-------------------------------------------");
         System.out.println("Listing all developers:");
-        employeeService.printEmployeesWithRole(Role.DEVELOPER);
+        employeeService.getEmployeesWithRole(Role.DEVELOPER).forEach(System.out::println);
         System.out.println("-------------------------------------------");
         System.out.println("Listing all employees in AIR:");
-        employeeService.printEmployeesInWorkplace("AIR");
+        employeeService.getEmployeesInWorkplace("AIR").forEach(System.out::println);
         System.out.println("-------------------------------------------");
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(EmployeeApplication.class, args);
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+        applicationContext.register(EmployeeApplication.class);
+        applicationContext.refresh();
+        EmployeeApplication application = applicationContext.getBean(EmployeeApplication.class);
+        application.run(args);
     }
 }
