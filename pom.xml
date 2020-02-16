@@ -8,6 +8,14 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <!-- NEW -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+        <relativePath /> <!-- lookup parent from infrastructure -->
+    </parent>
+
     <properties>
         <!-- JAVA -->
         <java.version>11</java.version>
@@ -18,6 +26,12 @@
     </properties>
 
     <dependencies>
+        <!-- NEW -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

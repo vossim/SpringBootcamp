@@ -1,6 +1,9 @@
 package com.tvh.bootcamp;
 
-public class EmployeeApplication {
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+
+public class EmployeeApplication implements CommandLineRunner {
 
     private final EmployeeService employeeService = new EmployeeService();
 
@@ -15,6 +18,6 @@ public class EmployeeApplication {
     }
 
     public static void main(String[] args) {
-        new EmployeeApplication().run(args);
+        SpringApplication.run(EmployeeApplication.class, args);
     }
 }
