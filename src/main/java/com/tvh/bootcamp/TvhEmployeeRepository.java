@@ -2,6 +2,11 @@ package com.tvh.bootcamp;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@Primary
 public class TvhEmployeeRepository implements EmployeeRepository {
     @Override
     public List<Employee> getEmployees() {
