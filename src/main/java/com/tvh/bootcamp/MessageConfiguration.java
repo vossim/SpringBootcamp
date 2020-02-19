@@ -1,5 +1,10 @@
 package com.tvh.bootcamp;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ConfigurationProperties("employee-application")
 public class MessageConfiguration {
     private String welcomeMessage;
     private String description;
