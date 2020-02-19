@@ -1,6 +1,5 @@
 package com.tvh.bootcamp;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,17 +7,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class EmployeeApplication implements CommandLineRunner {
 
-    @Value("${employee-application.welcome-message}")
-    private String welcomeMessage;
+    private final MessageConfiguration messageConfiguration;
 
     private final EmployeeService employeeService;
 
-    public EmployeeApplication(EmployeeService employeeService) {
+    public EmployeeApplication(EmployeeService employeeService, MessageConfiguration messageConfiguration) {
         this.employeeService = employeeService;
+        this.messageConfiguration = messageConfiguration;
     }
 
     public void run(String... args) {
-        System.out.println(welcomeMessage);
+        System.out.println(messageConfiguration.getWelcomeMessage());
+        System.out.println(messageConfiguration.getDescription());
         System.out.println("-------------------------------------------");
         System.out.println("Listing all developers:");
         employeeService.printEmployeesWithRole(Role.DEVELOPER);
