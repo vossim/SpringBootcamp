@@ -1,0 +1,3 @@
+employee-application:
+  welcome-message: Welcome to the employee application
+  description: This application lists employees
