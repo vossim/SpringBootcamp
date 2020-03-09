@@ -16,18 +16,6 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public void printEmployeesWithRole(Role role) {
-        employeeRepository.getEmployees().stream()
-                .filter(employee -> role.equals(employee.getRole()))
-                .forEach(System.out::println);
-    }
-
-    public void printEmployeesInWorkplace(String workplace) {
-        employeeRepository.getEmployees().stream()
-                .filter(employee -> workplace.equals(employee.getWorkplace()))
-                .forEach(System.out::println);
-    }
-
     public List<Employee> getEmployeesWithRole(final Role role) {
         List<Employee> employees = employeeRepository.getEmployees();
         if (employees == null) {
@@ -35,6 +23,16 @@ public class EmployeeService {
         }
         return employees.stream()
                 .filter(employee -> role.equals(employee.getRole()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Employee> getEmployeesInWorkplace(String workplace) {
+        List<Employee> employees = employeeRepository.getEmployees();
+        if (employees == null) {
+            return List.of();
+        }
+        return employees.stream()
+                .filter(employee -> workplace.equals(employee.getWorkplace()))
                 .collect(Collectors.toList());
     }
 

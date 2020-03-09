@@ -24,10 +24,10 @@ public class EmployeeApplication implements CommandLineRunner {
         System.out.println(messageConfiguration.getDescription());
         System.out.println("-------------------------------------------");
         System.out.println("Listing all developers:");
-        employeeService.printEmployeesWithRole(Role.DEVELOPER);
+        employeeService.getEmployeesWithRole(Role.DEVELOPER).forEach(System.out::println);
         System.out.println("-------------------------------------------");
         System.out.println("Listing all employees in AIR:");
-        employeeService.printEmployeesInWorkplace("AIR");
+        employeeService.getEmployeesInWorkplace("AIR").forEach(System.out::println);
         System.out.println("-------------------------------------------");
     }
 
