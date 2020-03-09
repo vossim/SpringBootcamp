@@ -1,4 +1,4 @@
-package com.tvh.bootcamp;
+package com.tvh.bootcamp.domain;
 
 public enum Role {
     DEVELOPER,

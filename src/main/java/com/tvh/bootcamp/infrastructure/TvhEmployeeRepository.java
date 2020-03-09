@@ -1,7 +1,10 @@
-package com.tvh.bootcamp;
+package com.tvh.bootcamp.infrastructure;
 
 import java.util.List;
 
+import com.tvh.bootcamp.domain.Employee;
+import com.tvh.bootcamp.domain.Role;
+import com.tvh.bootcamp.infrastructure.EmployeeRepository;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
