@@ -1,7 +1,10 @@
-package com.tvh.bootcamp;
+package com.tvh.bootcamp.application;
 
 import java.util.List;
 
+import com.tvh.bootcamp.domain.Employee;
+import com.tvh.bootcamp.domain.Role;
+import com.tvh.bootcamp.infrastructure.EmployeeRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -72,6 +75,21 @@ public class EmployeeServiceTest {
 
         Assertions.assertEquals(3, employees.size());
         Assertions.assertEquals(List.of(developer, developer2, developer3), employees);
+    }
+
+    @Test
+    void getAllEmployees_null() {
+        when(repository.getEmployees()).thenReturn(null);
+
+        Assertions.assertEquals(List.of(), service.getAllEmployees());
+    }
+
+    @Test
+    void getAllEmployees() {
+        List<Employee> employees = List.of(this.developer, systemEnabler, tester);
+        when(repository.getEmployees()).thenReturn(employees);
+
+        Assertions.assertSame(employees, service.getAllEmployees());
     }
 
     private Employee createDeveloper(final String name) {

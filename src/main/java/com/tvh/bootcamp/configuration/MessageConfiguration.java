@@ -1,4 +1,4 @@
-package com.tvh.bootcamp;
+package com.tvh.bootcamp.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

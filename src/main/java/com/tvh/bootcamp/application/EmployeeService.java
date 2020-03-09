@@ -1,8 +1,11 @@
-package com.tvh.bootcamp;
+package com.tvh.bootcamp.application;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.tvh.bootcamp.domain.Employee;
+import com.tvh.bootcamp.domain.Role;
+import com.tvh.bootcamp.infrastructure.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,5 +36,13 @@ public class EmployeeService {
         return employees.stream()
                 .filter(employee -> role.equals(employee.getRole()))
                 .collect(Collectors.toList());
+    }
+
+    public List<Employee> getAllEmployees() {
+        List<Employee> employees = employeeRepository.getEmployees();
+        if (employees == null) {
+            return List.of();
+        }
+        return employees;
     }
 }
